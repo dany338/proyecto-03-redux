@@ -1,37 +1,58 @@
-import { firebase } from '../../firebase';
+import { firebase } from "../../firebase";
 
-export const iniciarSesion = async (email, password) => {
-    return (dispatch) => {
-        try {
-            const { user } = await firebase
-                .auth()
-                .signInWithEmailAndPassword(email, password);
+export const validateAuth = () => {
+  return (dispatch) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log("mira el user", user);
+      let autenticado;
+      if (user?.uid) {
+        autenticado = true;
+      } else {
+        autenticado = false;
+      }
 
-            dispatch({
-                type: 'LOGIN',
-                payload: { email: user.email, isAuth: true },
-            });
-        } catch (error) {
-            console.log('mira el error', error);
-        }
-    }
-
+      dispatch({
+        type: "UPDATE_IS_AUTH",
+        payload: {
+          isAuth: autenticado,
+          email: user?.email,
+          consultando: false,
+        },
+      });
+    });
+  };
 };
 
-export const cerrarSesion = async () => {
-    return (dispatch) => {
-        try {
-            await firebase.auth().signOut();
-            dispatch(logout());
-        } catch (error) {
-            console.log(error)
-        }
-    }
+export const iniciarSesion = (email, password) => {
+  return async (dispatch) => {
+    try {
+      const { user } = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
 
-}
+      dispatch({
+        type: "LOGIN",
+        payload: { email: user.email, isAuth: true },
+      });
+    } catch (error) {
+      console.log("mira el error", error);
+    }
+  };
+};
+
+export const cerrarSesion = () => {
+  return async (dispatch) => {
+    try {
+      await firebase.auth().signOut();
+      dispatch(logout());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
 const logout = () => {
-    return {
-        type: 'LOGOUT'
-    }
-}
+  return {
+    type: "LOGOUT",
+  };
+};

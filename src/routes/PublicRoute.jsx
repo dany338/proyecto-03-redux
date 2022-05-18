@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
-import AuthContext from '../context/auth/authContext';
+// import AuthContext from '../context/auth/authContext';
 
 const PublicRoute = ({ children }) => {
-  // const [isAuth] = useState(false);
 
-  const { state: { isAuth, consultando } } = useContext(AuthContext);
-  // console.log('mira al state desde la ruta publica', isAuth);
+  const { auth } = useSelector((state) => state);
+  const { isAuth, consultando } = auth;
+
+  // const { state: { isAuth, consultando } } = useContext(AuthContext);
 
   if (consultando) return <h1>Cargando ....</h1>
 

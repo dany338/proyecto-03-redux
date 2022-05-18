@@ -5,6 +5,7 @@ import Loigin from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import AgregarPlato from '../pages/AgregarPlato';
 import EditarPlato from '../pages/EditarPlato';
+import ListaUsuarios from '../pages/ListaUsuarios';
 
 export const listRoute = [
   {
@@ -36,6 +37,14 @@ export const listRoute = [
     element: (
       <PrivateRoute>
         <EditarPlato />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/ListaUsuarios',
+    element: (
+      <PrivateRoute>
+        <ListaUsuarios />
       </PrivateRoute>
     ),
   },

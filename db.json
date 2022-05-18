@@ -1,0 +1,30 @@
+{
+  "rutas1": {
+    "lista": [
+      {
+        "id": 1111,
+        "to": "ListaUsuarios",
+        "name": "ListaUsuarios"
+      },
+      {
+        "id": 2222,
+        "to": "Estadisticas",
+        "name": "Estadisticas"
+      }
+    ]
+  },
+  "rutas2": {
+    "lista": [
+      {
+        "id": 3333,
+        "to": "Pedidos",
+        "name": "Pedidos"
+      },
+      {
+        "id": 4444,
+        "to": "Devoluciones",
+        "name": "Devoluciones"
+      }
+    ]
+  }
+}
