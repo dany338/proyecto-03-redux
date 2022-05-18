@@ -13,7 +13,9 @@ const RowTable = ({ info, indice, elimnar }) => {
         <Link className='btn btn-warning' to={`/editar-plato/${id}`}>
           Editar
         </Link>
-        <button className='btn btn-primary'>Ver detalle</button>
+        <Link className='btn btn-primary' to={`/ver-plato/${id}`}>
+          Ver detalle
+        </Link>
         <button className='btn btn-danger' onClick={elimnar}>Eliminar</button>
       </td>
     </tr>

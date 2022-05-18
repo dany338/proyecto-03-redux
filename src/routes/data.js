@@ -5,6 +5,7 @@ import Loigin from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import AgregarPlato from '../pages/AgregarPlato';
 import EditarPlato from '../pages/EditarPlato';
+import VerPlato from '../pages/VerPlato';
 import ListaUsuarios from '../pages/ListaUsuarios';
 
 export const listRoute = [
@@ -37,6 +38,14 @@ export const listRoute = [
     element: (
       <PrivateRoute>
         <EditarPlato />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/ver-plato/:editId',
+    element: (
+      <PrivateRoute>
+        <VerPlato />
       </PrivateRoute>
     ),
   },
